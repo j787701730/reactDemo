@@ -6,26 +6,25 @@ import axios from 'axios';
 class User extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      content: null,
-    }
+    console.log(this);
+
   }
 
   componentWillMount() {
-    var params = new URLSearchParams();
-    params.append('name', 'hello jdmc你好');
-    params.append('id', '2');
+    // var params = new URLSearchParams();
+    // params.append('name', 'hello jdmc你好');
+    // params.append('id', '2');
 
-    axios.post('https://www.zhengw.top/getBooks', params)
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios.post('https://www.zhengw.top/getBooks', params)
+    //   .then(function (res) {
+    //     console.log(res);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   }
   componentDidMount() {
-    console.log('componentDidMount');
+    // console.log('componentDidMount');
   }
   render() {
     return (

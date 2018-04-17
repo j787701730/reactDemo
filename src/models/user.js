@@ -1,6 +1,6 @@
 export default {
   namespace: 'user',
-  state: [],
+  state: [{ aa: 'hello' }],
   reducers: {
 
   },
