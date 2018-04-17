@@ -6,11 +6,13 @@ import './index.css';
 const app = dva({
   initialState: {
     products: [
-      {name: 'dva', id: 1},
-      {name: 'antd', id: 2},
-      {name: 'user', id: 3}
+      { name: 'dva', id: 1 },
+      { name: 'antd', id: 2 },
+      { name: 'user', id: 3 }
     ],
+    user: '余文杰'
   },
+
 });
 // 2. Plugins
 // app.use({});
