@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
 import 'antd/lib/layout/style';
-
+import { Link } from 'dva/router';
 
 import { Layout, Row, Col, LocaleProvider, Carousel } from 'antd';
 import { Button } from 'antd';
 import { Modal } from 'antd';
-import zh_CN from 'antd/lib/locale-provider/zh_CN';
+
 
 import jpg1 from '../assets/1.jpg';
 import jpg2 from '../assets/2.jpg';
@@ -61,7 +61,7 @@ function IndexPage() {
 
   return (
     <div>
-      <LocaleProvider locale={zh_CN}>
+      
         <Layout style={{ 'maxWidth': '1000px', margin: '0 auto' }}>
           <Row>
             <Col span={24}>
@@ -73,20 +73,20 @@ function IndexPage() {
               </Carousel>
             </Col>
           </Row>
-          <Header style={{ background: '#fff' }}>
-            <Row>
+          
+            
               <Row>
                 <Col span={12}>col-12 <Button onClick={showConfirm}>按钮</Button></Col>
                 <Col span={12}>col-12</Col>
               </Row>
-            </Row>
-          </Header>
+            
+          
           <Content style={{ height: '1000px' }}>
-            <a href="/#/user">user1</a>
+			  <Link to="/user">go to user</Link>
           </Content>
           <Footer>Footer</Footer>
         </Layout>
-      </LocaleProvider>
+      
     </div>
   );
 }
