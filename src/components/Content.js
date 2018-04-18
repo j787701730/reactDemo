@@ -17,21 +17,20 @@ class Content extends Component {
       prev: '',
       next: ''
     }
+    this.ajax = this.ajax.bind(this);
   }
-
-  componentWillMount() {
+  ajax() {
     var params = new URLSearchParams();
     // params.append('name', 'hello jdmc你好');
-    params.append('books_id', this.props.match.params.books_id);
-    params.append('id', this.props.match.params.id);
+    params.append('books_id', this.state.books_id);
+    params.append('id', this.state.id);
     var self = this;
     axios.post('https://www.zhengw.top/getContent', params)
       .then(function (res) {
-        console.log(res.data);
+        // console.log(res.data);
         self.setState({
           content: res.data[0].content,
           title: res.data[0].name,
-          books_id: res.data.books_id,
           prev: res.data.prev,
           next: res.data.next
         })
@@ -40,24 +39,41 @@ class Content extends Component {
         console.log(error);
       });
   }
-  componentDidMount() {
-    // console.log('componentDidMount');
+  componentWillMount() {
+    this.setState({
+      books_id: this.props.match.params.books_id,
+      id: this.props.match.params.id
+    }, function () {
+      this.ajax()
+    })
+
+
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (nextState.books_id == this.state.books_id || nextState.id == this.state.id) {
-  //     return false
-  //   }
-  // }
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+  componentWillUpdate() {
+    // window.location.reload()
+    console.log('componentWillUpdate');
+  }
+  handleClick(e) {
+    console.log(e.target.getAttribute('data-id'))
+    this.setState({
+      id: e.target.getAttribute('data-id')
+    }, function () {
+      this.ajax()
+    })
+  }
   render() {
     return (
       <div>
         <Row><h1>{this.state.title}</h1></Row>
         <Row>
           <Col span={8}>{this.state.prev ? <Link to={'/content/' + this.state.books_id +
-            '/' + this.state.prev} >上一回</Link> : '上一回'}</Col>
+            '/' + this.state.prev} onClick={this.handleClick.bind(this)} data-id={this.state.prev}>上一回</Link> : '上一回'}</Col>
           <Col span={8}></Col>
           <Col span={8}>{this.state.next ? <Link to={'/content/' + this.state.books_id +
-            '/' + this.state.next} >下一回</Link> : '下一回'}</Col>
+            '/' + this.state.next} onClick={this.handleClick.bind(this)} data-id={this.state.next}>下一回</Link> : '下一回'}</Col>
         </Row>
         <Row>
           <pre className={style.content} >{this.state.content}</pre>
