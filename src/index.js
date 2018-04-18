@@ -25,6 +25,7 @@ app.router(require('./router').default);
 app.model(require('./models/products').default);
 app.model(require('./models/user').default);
 app.model(require('./models/booklist').default);
+app.model(require('./models/content').default);
 app.model(require('./models/error').default);
 // 5. Start
 app.start('#root');

@@ -10,7 +10,8 @@ class Booklist extends Component {
     // console.log(this);
     // console.log(this.props.match.params);
     this.state = {
-      menus: []
+      menus: [],
+      books_id: ''
     }
   }
 
@@ -23,7 +24,8 @@ class Booklist extends Component {
       .then(function (res) {
         console.log(res.data);
         self.setState({
-          menus: res.data.data
+          menus: res.data.data,
+          books_id: res.data.books_id
         })
       })
       .catch(function (error) {
@@ -34,12 +36,13 @@ class Booklist extends Component {
     // console.log('componentDidMount');
   }
   render() {
+    var self = this;
     return (
       <div>
         <Row>
           {
             this.state.menus.map(function (val, i) {
-              var url = '/boook/' + val.id
+              var url = '/content/' + self.state.books_id + '/' + val.id
               // id: "1", name: "三国演义", author: "罗贯中"
               return (<Col span={12} key={i}><Link to={url} key={i}>{val.name}</Link></Col>)
             })

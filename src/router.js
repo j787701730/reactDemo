@@ -8,8 +8,8 @@ import IndexPage from './routes/IndexPage';
 import Products from './routes/Products'
 import User from './routes/User'
 import Booklist from './routes/Booklist'
+import Content from './routes/Content';
 import Error from './routes/Error'
-
 
 function RouterConfig({ history }) {
 	return (
@@ -20,6 +20,7 @@ function RouterConfig({ history }) {
 					<Route path="/products" exact component={Products} />
 					<Route path="/user" exact component={User} />
 					<Route path="/booklist/:id" exact component={Booklist} />
+					<Route path="/content/:books_id/:id" exact component={Content} />
 					<Route component={Error} />
 				</Switch>
 			</Router>
