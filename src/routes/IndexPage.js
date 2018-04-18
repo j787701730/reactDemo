@@ -33,9 +33,10 @@ function IndexPage() {
   const img_w = {
     'width': '100%',
   }
-
+  // var id = 12;
+  // var url = '/user/' + id;
   function onChange(a, b, c) {
-    console.log(a, b, c);
+    // console.log(a, b, c);
   }
   return (
     <div>
@@ -55,7 +56,8 @@ function IndexPage() {
           <Col span={12}>col-12</Col>
         </Row>
         <Content style={{ height: '1000px' }}>
-          <Link to="/user">go to user</Link>
+          {/* <Link to={{ pathname: '/user', query: { name: 'huahua', age: 10 } }}>go to user</Link> */}
+          <Link to='/user' > go to user</Link>
         </Content>
         <Footer>Footer</Footer>
       </Layout>

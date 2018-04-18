@@ -4,7 +4,7 @@ import User from '../components/User';
 
 
 const Users = ({ user, id }) => {
-  console.log(this.props);
+  // console.log(this.props);
   return (
     <div>
       <h2>User</h2>
@@ -16,4 +16,4 @@ const Users = ({ user, id }) => {
 // export default Products;
 export default connect(({ user, props }) => ({
   user, props
-}))(Users);
+}))(User);

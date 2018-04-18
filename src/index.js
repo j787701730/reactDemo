@@ -10,7 +10,7 @@ const app = dva({
       { name: 'antd', id: 2 },
       { name: 'user', id: 3 }
     ],
-    user: '余文杰'
+    user: 'this'
   },
 
 });
@@ -24,6 +24,7 @@ const app = dva({
 app.router(require('./router').default);
 app.model(require('./models/products').default);
 app.model(require('./models/user').default);
+app.model(require('./models/booklist').default);
 app.model(require('./models/error').default);
 // 5. Start
 app.start('#root');

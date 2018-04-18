@@ -1,25 +1,30 @@
 import React from 'react';
-import { Router, Route, Switch,Link } from 'dva/router';
-import IndexPage from './routes/IndexPage';
-import Products from './routes/Products'
-import User from './routes/User'
-import Error from './routes/Error'
+import { Router, Route, Switch } from 'dva/router';
 import { LocaleProvider } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 
+
+import IndexPage from './routes/IndexPage';
+import Products from './routes/Products'
+import User from './routes/User'
+import Booklist from './routes/Booklist'
+import Error from './routes/Error'
+
+
 function RouterConfig({ history }) {
-  return (
-	  <LocaleProvider locale={zh_CN}>
-		<Router history={history}>
-		  <Switch>
-			<Route path="/" exact component={IndexPage} />
-			<Route path="/products" exact component={Products} />
-			<Route path="/user/:id" exact component={User} />
-			<Route component={Error} />
-		  </Switch>
-		</Router>
-	  </LocaleProvider>
-  );
+	return (
+		<LocaleProvider locale={zh_CN}>
+			<Router history={history}>
+				<Switch>
+					<Route path="/" exact component={IndexPage} />
+					<Route path="/products" exact component={Products} />
+					<Route path="/user" exact component={User} />
+					<Route path="/booklist/:id" exact component={Booklist} />
+					<Route component={Error} />
+				</Switch>
+			</Router>
+		</LocaleProvider>
+	);
 }
 
 export default RouterConfig;
