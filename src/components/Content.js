@@ -46,8 +46,6 @@ class Content extends Component {
     }, function () {
       this.ajax()
     })
-
-
   }
   componentDidMount() {
     console.log('componentDidMount');
@@ -56,6 +54,19 @@ class Content extends Component {
     // window.location.reload()
     console.log('componentWillUpdate');
   }
+
+  componentWillReceiveProps(nextProps) {
+    const key = nextProps.match.params.id;
+    if (this.state.id != key) {
+      this.setState({
+        id: key,
+      }, () => {
+        this.ajax();
+      });
+    }
+  }
+
+
   handleClick(e) {
     console.log(e.target.getAttribute('data-id'))
     this.setState({
